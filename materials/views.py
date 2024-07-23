@@ -5,9 +5,8 @@ from materials.serilazers import CourseSerializer, LessonSerializer
 
 
 class CourseViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all()
     serializer_class = CourseSerializer
-
+    queryset = Course.objects.all()
 
 
 class LessonListAPIView(generics.ListAPIView):
