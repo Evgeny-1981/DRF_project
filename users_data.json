@@ -1,0 +1,35 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$WMNqRXqDhlZp4lL48HOLoB$JT9eZXiZom8S7NgDUaGvFwzHiq002heDmP7XngBjwh0=",
+      "last_login": "2024-07-23T12:22:31.926Z",
+      "is_superuser": true,
+      "first_name": "admin",
+      "last_name": "skypro",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-07-22T09:44:20.324Z",
+      "email": "admin@sky.pro",
+      "phone": null,
+      "avatar": "",
+      "country": null,
+      "token": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "data_payment": "2024-07-23T12:22:55.512Z",
+      "paid_course": 1,
+      "paid_lesson": 2,
+      "summ_payment": 10000.0,
+      "payment_method": "наличные"
+    }
+  }
+]

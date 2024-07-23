@@ -18,8 +18,8 @@ router = DefaultRouter()
 urlpatterns = [
     path("users/create/", UserCreateAPIView.as_view(), name="user_create"),
     path("users/", UserListAPIView.as_view(), name="user_list"),
-    path("users/update/<int:pk>/", UserUpdateAPIView.as_view(), name="user_update"),
+    path("users/<int:pk>/update/", UserUpdateAPIView.as_view(), name="user_update"),
     path("users/<int:pk>/", UserRetrieveAPIView.as_view(), name="user_get"),
-    path("users/delete/<int:pk>", UserDestroyAPIView.as_view(), name="user_delete"),
+    path("users/<int:pk>/delete/", UserDestroyAPIView.as_view(), name="user_delete"),
     path("users/payments/", PaymentListAPIView.as_view(), name="payment_get"),
 ]

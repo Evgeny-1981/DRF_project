@@ -1,0 +1,62 @@
+[
+  {
+    "model": "users.payment",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "data_payment": "2024-07-23T19:55:34.686Z",
+      "paid_course": 1,
+      "paid_lesson": null,
+      "summ_payment": 10000.0,
+      "payment_method": "наличный"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "data_payment": "2024-07-23T19:55:34.698Z",
+      "paid_course": null,
+      "paid_lesson": 2,
+      "summ_payment": 15000.0,
+      "payment_method": "безналичный"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 3,
+    "fields": {
+      "user": 1,
+      "data_payment": "2024-07-23T15:01:19.791Z",
+      "paid_course": 1,
+      "paid_lesson": 2,
+      "summ_payment": 70000.0,
+      "payment_method": "безналичный"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "data_payment": "2024-07-22T15:01:23.458Z",
+      "paid_course": 1,
+      "paid_lesson": 1,
+      "summ_payment": 1500.0,
+      "payment_method": "безналичный"
+    }
+  },
+  {
+    "model": "users.payment",
+    "pk": 5,
+    "fields": {
+      "user": 1,
+      "data_payment": "2024-07-21T15:01:23.467Z",
+      "paid_course": 1,
+      "paid_lesson": 2,
+      "summ_payment": 150000.0,
+      "payment_method": "наличный"
+    }
+  }
+]
