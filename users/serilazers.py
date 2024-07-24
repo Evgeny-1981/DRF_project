@@ -14,4 +14,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("data_payment", "summ_payment", "payment_method", "pay_list")
+        fields = ("__all__")
