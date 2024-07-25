@@ -10,8 +10,8 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    pay_list = PaymentSerializer(source="payment_set", many=True, read_only=True)
+    payments = PaymentSerializer(source="payment_set", read_only=True, many=True, )
 
     class Meta:
         model = User
-        fields = ("id", "first_name",  "last_name", "email", "phone", "pay_list",)
+        fields = "__all__"
