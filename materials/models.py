@@ -32,7 +32,7 @@ class Lesson(models.Model):
     name_course = models.ForeignKey(
         Course,
         verbose_name="название курса",
-        related_name="урок",
+        related_name="lesson_list",
         on_delete=models.CASCADE,
         **NULLABLE,
     )
