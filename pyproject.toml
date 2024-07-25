@@ -15,6 +15,7 @@ python-dotenv = "^1.0.1"
 flake8 = "^7.1.0"
 django-filter = "^24.2"
 black = "^24.4.2"
+django-crontab = "^0.7.1"
 
 
 [build-system]
