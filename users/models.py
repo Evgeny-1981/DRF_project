@@ -38,7 +38,7 @@ class Payment(models.Model):
         Course, verbose_name="курс", on_delete=models.CASCADE, **NULLABLE
     )
     paid_lesson = models.ForeignKey(
-        Lesson, verbose_name="урок", on_delete=models.CASCADE, **NULLABLE
+        Lesson, related_name="payment", verbose_name="урок", on_delete=models.CASCADE, **NULLABLE
     )
     summ_payment = models.FloatField(verbose_name="сумма платежа")
     payment_method = models.CharField(max_length=255, verbose_name="способ платежа")

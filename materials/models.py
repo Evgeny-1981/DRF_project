@@ -31,8 +31,8 @@ class Lesson(models.Model):
     )
     name_course = models.ForeignKey(
         Course,
+        related_name="lesson",
         verbose_name="название курса",
-        related_name="урок",
         on_delete=models.CASCADE,
         **NULLABLE,
     )
