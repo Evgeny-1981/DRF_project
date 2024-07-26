@@ -1,4 +1,5 @@
 from rest_framework import viewsets, generics
+from rest_framework.permissions import IsAuthenticated
 
 from materials.models import Course, Lesson
 from materials.serilazers import CourseSerializer, LessonSerializer
@@ -7,6 +8,7 @@ from materials.serilazers import CourseSerializer, LessonSerializer
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    permission_classes = [IsAuthenticated]
 
 
 class LessonListAPIView(generics.ListAPIView):
