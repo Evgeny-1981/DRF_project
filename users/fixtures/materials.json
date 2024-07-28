@@ -1,0 +1,46 @@
+[
+{
+  "model": "materials.course",
+  "pk": 7,
+  "fields": {
+    "name": "Менеджмент",
+    "description": null,
+    "image": "",
+    "owner": 6
+  }
+},
+{
+  "model": "materials.course",
+  "pk": 9,
+  "fields": {
+    "name": "Маркетинг",
+    "description": "",
+    "image": "",
+    "owner": 11
+  }
+},
+{
+  "model": "materials.lesson",
+  "pk": 4,
+  "fields": {
+    "name": "химия",
+    "description": "начальная химия",
+    "image": "",
+    "link_video": "",
+    "name_course": null,
+    "owner": 6
+  }
+},
+{
+  "model": "materials.lesson",
+  "pk": 8,
+  "fields": {
+    "name": "Биология",
+    "description": "Основы биологии",
+    "image": "",
+    "link_video": "",
+    "name_course": null,
+    "owner": 11
+  }
+}
+]

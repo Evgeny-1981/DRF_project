@@ -1,5 +1,7 @@
 from django.db import models
 
+from config.settings import AUTH_USER_MODEL
+
 NULLABLE = {"blank": True, "null": True}
 
 
@@ -8,6 +10,12 @@ class Course(models.Model):
     description = models.TextField(verbose_name="описание курса", **NULLABLE)
     image = models.ImageField(
         upload_to="media/course_image/", verbose_name="изображение", **NULLABLE
+    )
+    owner = models.ForeignKey(
+        AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="автор курса",
+        **NULLABLE,
     )
 
     def __str__(self):
@@ -34,6 +42,12 @@ class Lesson(models.Model):
         related_name="lesson",
         verbose_name="название курса",
         on_delete=models.CASCADE,
+        **NULLABLE,
+    )
+    owner = models.ForeignKey(
+        AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="автор урока",
         **NULLABLE,
     )
 
