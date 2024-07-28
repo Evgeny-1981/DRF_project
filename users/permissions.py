@@ -2,10 +2,9 @@ from rest_framework.permissions import BasePermission
 
 
 class IsModer(BasePermission):
-    message = "Adding customers not allowed."
 
     def has_permission(self, request, view):
-        return request.user.groups.filter(name='moders').exists()
+        return request.user.groups.filter(name="Модераторы").exists()
 
 
 class IsOwner(BasePermission):

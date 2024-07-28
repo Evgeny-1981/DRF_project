@@ -1,9 +1,10 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from users.models import User, Payment
-from users.serilazers import UserSerializer, PaymentSerializer
+from users.models import Payment, User
+from users.serilazers import PaymentSerializer, UserSerializer
 
 
 class UserCreateAPIView(generics.CreateAPIView):
@@ -14,8 +15,6 @@ class UserCreateAPIView(generics.CreateAPIView):
         user = serializer.save(is_active=True)
         user.set_password(user.password)
         user.save()
-
-
 
 
 class UserListAPIView(generics.ListAPIView):

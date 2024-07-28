@@ -5,6 +5,8 @@ from materials.models import Course, Lesson
 
 
 class LessonSerializer(serializers.ModelSerializer):
+    owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Lesson
         fields = "__all__"
@@ -13,6 +15,7 @@ class LessonSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     count_lessons = SerializerMethodField()
     lessons = LessonSerializer(source="lesson", many=True, read_only=True)
+    owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     def get_count_lessons(self, obj):
         return Lesson.objects.filter(name_course=obj).count()
