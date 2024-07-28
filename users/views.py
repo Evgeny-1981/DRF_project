@@ -1,8 +1,10 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.filters import OrderingFilter, SearchFilter
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 from users.models import Payment, User
+from users.permissions import IsOwnerProfile
 from users.serilazers import PaymentSerializer, UserSerializer
 
 
@@ -19,21 +21,25 @@ class UserCreateAPIView(generics.CreateAPIView):
 class UserListAPIView(generics.ListAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = (IsAuthenticated,)
 
 
 class UserUpdateAPIView(generics.UpdateAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = (IsAuthenticated, IsOwnerProfile,)
 
 
 class UserRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = (IsAuthenticated,)
 
 
 class UserDestroyAPIView(generics.DestroyAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    permission_classes = (IsAdminUser,)
 
 
 class PaymentListAPIView(generics.ListAPIView):

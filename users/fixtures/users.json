@@ -1,0 +1,88 @@
+[
+{
+  "model": "users.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$WMNqRXqDhlZp4lL48HOLoB$JT9eZXiZom8S7NgDUaGvFwzHiq002heDmP7XngBjwh0=",
+    "last_login": "2024-07-27T19:04:53.157Z",
+    "is_superuser": true,
+    "first_name": "admin",
+    "last_name": "skypro",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-07-22T09:44:20Z",
+    "email": "admin@sky.pro",
+    "phone": null,
+    "avatar": "",
+    "country": null,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIxOTk2OTcxLCJpYXQiOjE",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$UJioTcQQimPdBwhDuA6Ti9$4jIDKapJIU6j8Z9wPfg0UNeY2GzEzn+M9aPiXMQz1rg=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-07-27T16:46:40.344Z",
+    "email": "next-i@yandex.ru",
+    "phone": null,
+    "avatar": "",
+    "country": null,
+    "token": null,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$ssq9c7EcK2Wk6GOVNtdJPJ$XywbTj6Eg0GTtEv77f9z6g5qpNR3gf403dEyTJj0k9I=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-07-28T05:48:27Z",
+    "email": "dzhonni@yandex.ru",
+    "phone": null,
+    "avatar": "",
+    "country": null,
+    "token": null,
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$720000$C1PcCDEn4FZV7PJmhWRaXj$/VzEEEcr3Ke/jnO7nA8bstvJ9StAmfTr4WfrGa9lfgA=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-07-28T09:50:15.932Z",
+    "email": "test@yandex.ru",
+    "phone": null,
+    "avatar": "",
+    "country": null,
+    "token": null,
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

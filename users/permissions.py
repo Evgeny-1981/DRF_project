@@ -15,3 +15,11 @@ class IsOwner(BasePermission):
         if obj.owner == request.user:
             return True
         return False
+
+
+class IsOwnerProfile(BasePermission):
+    def has_object_permission(self, request, view, obj):
+        if obj.oid == request.user.id:
+            return True
+        return False
+
