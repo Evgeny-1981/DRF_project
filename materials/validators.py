@@ -7,4 +7,4 @@ def validate_allowed_links(value):
     if any(link in value for link in allowed_links):
         return True
     else:
-        raise ValidationError(f"Допустимо использовать только ссылки на ресурсы: {*allowed_links,}")
+        raise ValidationError(f"Допустимо использовать только ссылки на следующие ресурсы: {*allowed_links,}")
