@@ -24,11 +24,13 @@ class CourseViewSet(viewsets.ModelViewSet):
 
 
 class SubscriptionAPIView(APIView):
+    """Класс для созданиия подписки пользователей"""
     serializer_class = SubscriptionSerializer
     queryset = Subscription.objects.all()
     permission_classes = (IsAuthenticated, ~IsModer,)
 
     def post(self, *args, **kwargs):
+        """Метод добавляет подписку на выбранный курс, если она отсутствует, иначе удаляет подписку"""
         user = self.request.user
         course_id = self.request.data.get("course")
         course_item = get_object_or_404(Course, pk=course_id)
