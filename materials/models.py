@@ -34,8 +34,8 @@ class Lesson(models.Model):
     image = models.ImageField(
         upload_to="media/lesson_image/", verbose_name="изображение", **NULLABLE
     )
-    link_video = models.FileField(
-        upload_to="media/lesson_video", verbose_name="видео", **NULLABLE
+    link_video = models.URLField(max_length=200,
+        verbose_name="Ссылка на видео", **NULLABLE
     )
     name_course = models.ForeignKey(
         Course,

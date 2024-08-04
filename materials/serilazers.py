@@ -2,10 +2,12 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
 from materials.models import Course, Lesson
+from materials.validators import validate_allowed_links
 
 
 class LessonSerializer(serializers.ModelSerializer):
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    link_video = serializers.URLField(validators=[validate_allowed_links])
 
     class Meta:
         model = Lesson
