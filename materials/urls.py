@@ -25,4 +25,4 @@ urlpatterns = [
         LessonDestroyAPIView.as_view(),
         name="lesson_delete",
     ),
-    path("subscription/create/", SubscriptionAPIView.as_view(), name="subscription"),] + router.urls
+    path("subscription/create/", SubscriptionAPIView.as_view(), name="subscription_create"),] + router.urls
