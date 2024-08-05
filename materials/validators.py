@@ -1,7 +1,7 @@
 from rest_framework.serializers import ValidationError
 
 # Создаем список разрешенных рессурсов
-allowed_links = ['https://www.youtube.com/', 'https://www.rutube.com']
+allowed_links = ['https://www.youtube.com/', 'https://youtube.com/', 'https://www.rutube.com', 'https://rutube.com']
 
 
 def validate_allowed_links(value):
