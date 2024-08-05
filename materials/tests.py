@@ -26,8 +26,8 @@ class LessonTestCase(APITestCase):
     def test_lesson_create(self):
         url = reverse("materials:lesson_create")
         data = {
-            "name": "Тестовый урок для проверки",
-            "link_video": "https://www.youtube.com/qwerty",
+            "name": "Тестовый урок для проверки2",
+            "link_video": "https://www.youtube.com/qwerty2",
             "name_course": self.course.pk,
         }
         response = self.client.post(url, data)
