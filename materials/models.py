@@ -34,9 +34,9 @@ class Lesson(models.Model):
     image = models.ImageField(
         upload_to="media/lesson_image/", verbose_name="изображение", **NULLABLE
     )
-    link_video = models.FileField(
-        upload_to="media/lesson_video", verbose_name="видео", **NULLABLE
-    )
+    link_video = models.URLField(max_length=250,
+                                 verbose_name="Ссылка на видео", **NULLABLE
+                                 )
     name_course = models.ForeignKey(
         Course,
         related_name="lesson",
@@ -59,3 +59,19 @@ class Lesson(models.Model):
         verbose_name = "Урок"
         verbose_name_plural = "Уроки"
         ordering = ("name",)
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE,
+                             verbose_name="Пользователь", **NULLABLE, )
+    course = models.ForeignKey(Course, on_delete=models.CASCADE,
+                               verbose_name="Подписка на курс", **NULLABLE, )
+
+    def __str__(self):
+        return f"Пользователь {self.user}, подписан на курс: {self.course}"
+
+    class Meta:
+        db_table = "subscription"
+        verbose_name = "Подписку"
+        verbose_name_plural = "Подиписки"
+        ordering = ("user",)
