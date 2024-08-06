@@ -21,6 +21,7 @@ isort = "^5.13.2"
 ipython = "^8.26.0"
 coverage = "^7.6.0"
 stripe = "^10.6.0"
+drf-yasg = "^1.21.7"
 
 
 [build-system]
