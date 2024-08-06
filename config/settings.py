@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "materials",
     "rest_framework_simplejwt",
     "drf_yasg",
+
 ]
 
 MIDDLEWARE = [
