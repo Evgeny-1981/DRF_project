@@ -9,6 +9,7 @@ from users.serilazers import PaymentSerializer, UserSerializer
 
 
 class UserCreateAPIView(generics.CreateAPIView):
+    """Класс для создания пользователя"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
 
@@ -19,30 +20,35 @@ class UserCreateAPIView(generics.CreateAPIView):
 
 
 class UserListAPIView(generics.ListAPIView):
+    """Класс для просмотра пользователей"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (IsAuthenticated,)
 
 
 class UserUpdateAPIView(generics.UpdateAPIView):
+    """Класс для обновления пользователей"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (IsAuthenticated, IsOwnerProfile,)
 
 
 class UserRetrieveAPIView(generics.RetrieveAPIView):
+    """Класс для просмотра конкретного пользователя"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (IsAuthenticated,)
 
 
 class UserDestroyAPIView(generics.DestroyAPIView):
+    """Класс для удаления конкретного пользователя"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (IsAdminUser,)
 
 
 class PaymentListAPIView(generics.ListAPIView):
+    """Класс для просмотра платежей"""
     serializer_class = PaymentSerializer
     queryset = Payment.objects.all()
     filter_backends = [SearchFilter, OrderingFilter, DjangoFilterBackend]

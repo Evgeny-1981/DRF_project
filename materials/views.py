@@ -11,11 +11,13 @@ from users.permissions import IsModer, IsOwner
 
 
 class CourseViewSet(viewsets.ModelViewSet):
+    """Класс для просмотра, обновления, удаления курсов"""
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
     pagination_class = CustomPagination
 
     def get_permissions(self):
+        """Метод проверяет права"""
         if self.action == 'create':
             self.permission_classes = (~IsModer,)
         elif self.action in ['update', 'retrieve']:
@@ -48,6 +50,7 @@ class SubscriptionAPIView(APIView):
 
 
 class LessonListAPIView(generics.ListAPIView):
+    """Класс для просмотра уроков"""
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, IsOwner | IsModer,)
@@ -55,24 +58,28 @@ class LessonListAPIView(generics.ListAPIView):
 
 
 class LessonCreateAPIView(generics.CreateAPIView):
+    """Класс для создания урока"""
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, ~IsModer,)
 
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
+    """Класс для обновления урока"""
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, IsModer | IsOwner,)
 
 
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
+    """Класс для просмотра информации по конкретному уроку"""
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, IsModer | IsOwner,)
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):
+    """Класс для удаления конкретного урока"""
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
     permission_classes = (IsAuthenticated, IsOwner,)
