@@ -44,8 +44,21 @@ class Payment(models.Model):
         on_delete=models.CASCADE,
         **NULLABLE,
     )
-    summ_payment = models.FloatField(verbose_name="сумма платежа")
-    payment_method = models.CharField(max_length=255, verbose_name="способ платежа")
+    summ_payment = models.PositiveIntegerField(verbose_name="Сумма платежа")
+    payment_method = models.CharField(
+        max_length=20,
+        null=False,
+        choices=[
+            ("Наличные в кассу", "Наличные"),
+            ("Банковский перевод", "Банковский перевод"),
+        ],
+        default="Банковский перевод",
+        verbose_name="Способ оплаты",
+    )
+    session_id = models.CharField(max_length=255, verbose_name="ID сессии", **NULLABLE)
+    payment_link = models.URLField(
+        max_length=400, verbose_name="Ссылка на оплату", **NULLABLE
+    )
 
     def __str__(self):
         return (

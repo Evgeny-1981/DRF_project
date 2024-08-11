@@ -17,6 +17,9 @@ class Course(models.Model):
         verbose_name="автор курса",
         **NULLABLE,
     )
+    price_usd = models.PositiveIntegerField(
+        default=0, verbose_name="Стоимость курса, usd", **NULLABLE
+    )
 
     def __str__(self):
         return f"{self.name}"
@@ -34,9 +37,9 @@ class Lesson(models.Model):
     image = models.ImageField(
         upload_to="media/lesson_image/", verbose_name="изображение", **NULLABLE
     )
-    link_video = models.URLField(max_length=250,
-                                 verbose_name="Ссылка на видео", **NULLABLE
-                                 )
+    link_video = models.URLField(
+        max_length=250, verbose_name="Ссылка на видео", **NULLABLE
+    )
     name_course = models.ForeignKey(
         Course,
         related_name="lesson",
@@ -50,6 +53,9 @@ class Lesson(models.Model):
         verbose_name="автор урока",
         **NULLABLE,
     )
+    price_usd = models.PositiveIntegerField(
+        default=0, verbose_name="Стоимость урока, usd", **NULLABLE
+    )
 
     def __str__(self):
         return f"{self.name}"
@@ -62,10 +68,18 @@ class Lesson(models.Model):
 
 
 class Subscription(models.Model):
-    user = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE,
-                             verbose_name="Пользователь", **NULLABLE, )
-    course = models.ForeignKey(Course, on_delete=models.CASCADE,
-                               verbose_name="Подписка на курс", **NULLABLE, )
+    user = models.ForeignKey(
+        AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Пользователь",
+        **NULLABLE,
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        verbose_name="Подписка на курс",
+        **NULLABLE,
+    )
 
     def __str__(self):
         return f"Пользователь {self.user}, подписан на курс: {self.course}"

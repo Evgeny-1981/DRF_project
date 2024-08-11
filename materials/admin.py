@@ -32,5 +32,8 @@ class SubscriptionAdmin(admin.ModelAdmin):
         "user",
         "course",
     )
-    list_filter = ("user", "course",)
+    list_filter = (
+        "user",
+        "course",
+    )
     search_fields = ("name",)

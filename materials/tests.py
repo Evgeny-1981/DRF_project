@@ -11,10 +11,14 @@ class LessonTestCase(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create(email="test@yandex.ru")
-        self.course = Course.objects.create(name="Тестовый курс для проверки", )
-        self.lesson = Lesson.objects.create(name="Тестовый урок для проверки",
-                                            link_video="https://www.youtube.com/qwerty",
-                                            owner=self.user, )
+        self.course = Course.objects.create(
+            name="Тестовый курс для проверки",
+        )
+        self.lesson = Lesson.objects.create(
+            name="Тестовый урок для проверки",
+            link_video="https://www.youtube.com/qwerty",
+            owner=self.user,
+        )
         self.client.force_authenticate(user=self.user)
 
     def test_lesson_list(self):
@@ -47,7 +51,9 @@ class LessonTestCase(APITestCase):
         data = {"name": "Тестовый урок обновлен"}
         response = self.client.patch(url, data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(Lesson.objects.get(pk=self.lesson.pk).name, "Тестовый урок обновлен")
+        self.assertEqual(
+            Lesson.objects.get(pk=self.lesson.pk).name, "Тестовый урок обновлен"
+        )
 
     def test_lesson_delete(self):
         url = reverse("materials:lesson_delete", args=(self.lesson.pk,))
@@ -61,7 +67,9 @@ class SubscriptionTestCase(APITestCase):
 
     def setUp(self):
         self.user = User.objects.create(email="test@yandex.ru")
-        self.course = Course.objects.create(name="Тестовая подписка на курс для проверки", )
+        self.course = Course.objects.create(
+            name="Тестовая подписка на курс для проверки",
+        )
         self.client.force_authenticate(user=self.user)
         self.url = reverse("materials:subscription_create")
 
