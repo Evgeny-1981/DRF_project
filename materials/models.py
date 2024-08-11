@@ -18,7 +18,7 @@ class Course(models.Model):
         **NULLABLE,
     )
     amount = models.IntegerField(
-        default=1000, verbose_name="Стоимость курса, руб", **NULLABLE
+        default=0, verbose_name="Стоимость курса, руб", **NULLABLE
     )
 
     def __str__(self):
@@ -52,6 +52,9 @@ class Lesson(models.Model):
         on_delete=models.CASCADE,
         verbose_name="автор урока",
         **NULLABLE,
+    )
+    amount = models.IntegerField(
+        default=0, verbose_name="Стоимость урока, руб", **NULLABLE
     )
 
     def __str__(self):
