@@ -17,8 +17,8 @@ class Course(models.Model):
         verbose_name="автор курса",
         **NULLABLE,
     )
-    amount = models.IntegerField(
-        default=0, verbose_name="Стоимость курса, руб", **NULLABLE
+    price_usd = models.PositiveIntegerField(
+        default=0, verbose_name="Стоимость курса, usd", **NULLABLE
     )
 
     def __str__(self):
@@ -53,8 +53,8 @@ class Lesson(models.Model):
         verbose_name="автор урока",
         **NULLABLE,
     )
-    amount = models.IntegerField(
-        default=0, verbose_name="Стоимость урока, руб", **NULLABLE
+    price_usd = models.PositiveIntegerField(
+        default=0, verbose_name="Стоимость урока, usd", **NULLABLE
     )
 
     def __str__(self):
