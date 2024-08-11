@@ -45,7 +45,9 @@ class Payment(models.Model):
         **NULLABLE,
     )
     summ_payment = models.FloatField(verbose_name="сумма платежа")
-    payment_method = models.CharField(max_length=255, verbose_name="способ платежа")
+    payment_method = models.CharField(max_length=255, verbose_name="Способ платежа")
+    session_id = models.CharField(max_length=255, verbose_name='ID сессии', **NULLABLE)
+    payment_link = models.URLField(max_length=400, verbose_name='Ссылка на оплату', **NULLABLE)
 
     def __str__(self):
         return (
