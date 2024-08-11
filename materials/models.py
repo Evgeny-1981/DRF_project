@@ -17,7 +17,9 @@ class Course(models.Model):
         verbose_name="автор курса",
         **NULLABLE,
     )
-    amount = models.IntegerField(default=1000, verbose_name="Стоимость курса", **NULLABLE)
+    amount = models.IntegerField(
+        default=1000, verbose_name="Стоимость курса, руб", **NULLABLE
+    )
 
     def __str__(self):
         return f"{self.name}"

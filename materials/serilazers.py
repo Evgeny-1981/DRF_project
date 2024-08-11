@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
 from materials.models import Course, Lesson, Subscription
+from materials.serviсes import convert_rub_to_usd
 from materials.validators import validate_allowed_links
 
 
@@ -19,6 +20,7 @@ class CourseSerializer(serializers.ModelSerializer):
     lessons = LessonSerializer(source="lesson", many=True, read_only=True)
     owner = serializers.HiddenField(default=serializers.CurrentUserDefault())
     subscription = SerializerMethodField(read_only=True)
+    usd_price = serializers.SerializerMethodField()
 
     def get_count_lessons(self, obj):
         return Lesson.objects.filter(name_course=obj).count()
@@ -27,6 +29,9 @@ class CourseSerializer(serializers.ModelSerializer):
         return Subscription.objects.filter(
             course=course, user=self.context["request"].user
         ).exists()
+
+    def get_usd_price(self, course):
+        return convert_rub_to_usd(course.amount)
 
     class Meta:
         model = Course
