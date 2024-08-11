@@ -6,7 +6,12 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from users.models import Payment, User
 from users.permissions import IsOwnerProfile
 from users.serilazers import PaymentSerializer, UserSerializer
-from users.services import create_stripe_price
+from users.services import choose_material
+from users.services import (
+    create_stripe_price,
+    create_stripe_product,
+    create_stripe_session,
+)
 
 
 class UserCreateAPIView(generics.CreateAPIView):
@@ -71,11 +76,18 @@ class PaymentCreateAPIView(generics.CreateAPIView):
     queryset = Payment.objects.all()
 
     def perform_create(self, serializer):
+        """Сохраняет платеж и создает сессию в страйпе для безналичной оплаты"""
+
         payment = serializer.save(user=self.request.user)
-        product = create_stripe_product(payment)
-        if payment.payment_method == "bank_transfer":
-            price = create_stripe_price(payment, product)
-            session_id, payment_link = create_stripe_session(price)
+        material = choose_material(payment)
+        if payment.payment_method == "Банковский перевод":
+            # Создание платежа в страйпе при безналичной оплате.
+            product = create_stripe_product(material)
+            price = create_stripe_price(payment.summ_payment, product)
+            session_id, payment_link = create_stripe_session(price, payment.pk)
             payment.session_id = session_id
-            payment.link = payment_link
+            payment.payment_link = payment_link
+            payment.summ_payment = price.unit_amount / 100
+            payment.save()
+        else:
             payment.save()
