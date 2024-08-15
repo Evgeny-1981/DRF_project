@@ -152,6 +152,10 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
 REST_FRAMEWORK = {
     # Use Django's standard 'django.contrib.auth' permissions,
     # or allow read-only access for unauthenticated users.
@@ -168,6 +172,7 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "UPDATE_LAST_LOGIN": True,
 }
 
 CORS_ALLOWED_ORIGINS = [
@@ -199,3 +204,11 @@ CELERY_TASK_TRACK_STARTED = True
 
 # Максимальное время на выполнение задачи
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULE = {
+    "check_last_login": {
+        "task": "users.tasks.check_last_login",
+        "schedule": timedelta(days=1),
+    },
+}

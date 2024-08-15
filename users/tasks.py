@@ -6,7 +6,7 @@ from users.models import User
 
 @shared_task
 def check_last_login():
-    """Проверяет дату последнего входа пользователя иблокирует пользователя в случае отсутсвия активности более 1 месяца."""
+    """Проверяет дату последнего входа пользователя и блокирует пользователя в случае отсутсвия активности более 1 месяца."""
     tmp_date = timezone.now() - timezone.timedelta(days=30)
     users = (
         User.objects.filter(is_active=True)
