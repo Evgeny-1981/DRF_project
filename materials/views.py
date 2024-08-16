@@ -33,6 +33,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         return super().get_permissions()
 
     def perform_update(self, serializer):
+        """Метод фиксирует обновления курсов"""
         updated_course = serializer.save()
         send_mail_about_course_updating.delay(updated_course.id)
         updated_course.save()

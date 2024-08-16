@@ -6,6 +6,7 @@ from materials.models import Subscription, Course
 
 @shared_task
 def send_mail_about_course_updating(course_id):
+    """Отправляем письма об обновлении курса подписчикам курса"""
     course = Course.objects.get(pk=course_id)
     subscription_info = Subscription.objects.filter(course=course_id)
 
