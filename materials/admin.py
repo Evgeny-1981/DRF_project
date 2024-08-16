@@ -9,6 +9,7 @@ class CourseAdmin(admin.ModelAdmin):
         "id",
         "name",
         "description",
+        "updated_course"
     )
     list_filter = ("name",)
     search_fields = ("name",)
