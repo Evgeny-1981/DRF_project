@@ -12,7 +12,7 @@ from materials.serilazers import (
     SubscriptionSerializer,
 )
 from users.permissions import IsModer, IsOwner
-from tasks import send_mail_about_course_updating
+# from tasks import send_mail_about_course_updating
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -32,11 +32,11 @@ class CourseViewSet(viewsets.ModelViewSet):
             self.permission_classes = (IsOwner,)
         return super().get_permissions()
 
-    def perform_update(self, serializer):
-        update_course = serializer.save()
-        course_name = Course.name
-        send_mail_about_course_updating.delay(course_name)
-        update_course.save()
+    # def perform_update(self, serializer):
+    #     update_course = serializer.save()
+    #     course_name = Course.name
+    #     send_mail_about_course_updating.delay(course_name)
+    #     update_course.save()
 
 
 
