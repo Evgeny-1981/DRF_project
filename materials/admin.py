@@ -5,11 +5,7 @@ from materials.models import Course, Lesson, Subscription
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = (
-        "id",
-        "name",
-        "description",
-    )
+    list_display = ("id", "name", "description", "updated_course")
     list_filter = ("name",)
     search_fields = ("name",)
 

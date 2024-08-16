@@ -20,6 +20,9 @@ class Course(models.Model):
     price_usd = models.PositiveIntegerField(
         default=0, verbose_name="Стоимость курса, usd", **NULLABLE
     )
+    updated_course = models.DateTimeField(
+        auto_now=True, verbose_name="Дата обновления курса", **NULLABLE
+    )
 
     def __str__(self):
         return f"{self.name}"
