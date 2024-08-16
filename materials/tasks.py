@@ -7,19 +7,17 @@ from materials.models import Subscription, Course
 @shared_task
 def send_mail_about_course_updating(course_id):
     course = Course.objects.get(pk=course_id)
-    print(course)
-    course_users = Subscription.objects.filter(course=course_id)
-    print(course_users)
+    subscription_info = Subscription.objects.filter(course=course_id)
 
     email_list = []
-    for user in course_users:
-        email_list.append(user.USERNAME_FIELD)
-        print(email_list)
-    # if email_list:
-    #     send_mail(
-    #         subject=f"Обновление по курсу {course.name}",
-    #         message=f"Вы подписаны на обновления курса, вышла новая информация по курсу.",
-    #         from_email=settings.EMAIL_HOST_USER,
-    #         recipient_list=email_list,
-    #         fail_silently=True
-    #     )
+    for subscription in subscription_info:
+        email_list.append(subscription.user.email)
+    if email_list:
+        send_mail(
+            subject=f"Обновление по курсу {course.name}",
+            message=f"Вы подписаны на обновления курса, вышла новая информация по курсу."
+            f"Вот, что изменилось: {course.description}",
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=email_list,
+            fail_silently=True,
+        )

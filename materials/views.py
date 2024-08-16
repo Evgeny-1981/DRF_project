@@ -34,11 +34,8 @@ class CourseViewSet(viewsets.ModelViewSet):
 
     def perform_update(self, serializer):
         updated_course = serializer.save()
-        print(updated_course)
         send_mail_about_course_updating.delay(updated_course.id)
-        print(updated_course.id)
         updated_course.save()
-
 
 
 class SubscriptionAPIView(APIView):

@@ -11,7 +11,9 @@ def check_inactive_users():
     и поле last_login меньше thirty_days_ago
     """
     thirty_days_ago = timezone.now() - timezone.timedelta(days=30)
-    inactive_users = User.objects.filter(is_active=True, last_login__lt=thirty_days_ago).exclude(is_superuser=True)
+    inactive_users = User.objects.filter(
+        is_active=True, last_login__lt=thirty_days_ago
+    ).exclude(is_superuser=True)
     for user in inactive_users:
         user.is_active = False
         user.save()
